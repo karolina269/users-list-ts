@@ -28,15 +28,7 @@ const UsersList = () => {
 
   const [isSorted, setIsSorted] = useState<boolean>(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const target = e.target;
-    const name: string = target.name;
-    setFormData((prevDataForm) => {
-      return { ...prevDataForm, [name]: target.value };
-    });
-  };
-
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const target = e.target;
     const name: string = target.name;
     setFormData((prevDataForm) => {
@@ -79,11 +71,11 @@ const UsersList = () => {
     <div className="usersList">
       <form onSubmit={setUser}>
         <label htmlFor="username">User name</label>
-        <input type="text" id="username" name="username" placeholder="User name" onChange={handleInputChange} value={formData.username} />
+        <input type="text" id="username" name="username" placeholder="User name" onChange={handleChange} value={formData.username} />
         <label htmlFor="email">User email</label>
-        <input type="email" id="email" name="email" placeholder="User email" onChange={handleInputChange} value={formData.email} />
+        <input type="email" id="email" name="email" placeholder="User email" onChange={handleChange} value={formData.email} />
         <label htmlFor="usertype">User type</label>
-        <select id="usertype" name="usertype" onChange={handleSelectChange}>
+        <select id="usertype" name="usertype" onChange={handleChange}>
           <option value="Admin">Admin</option>
           <option value="User">User</option>
         </select>
